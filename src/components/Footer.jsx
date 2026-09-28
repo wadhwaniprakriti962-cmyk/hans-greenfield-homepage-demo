@@ -1,0 +1,7 @@
+import {school as s} from '../data/schoolData';import {Container,go} from './ui';
+const cols=[['Quick Links',[['About Us','about'],['Academics','academics'],['Admissions','admissions'],['Infrastructure','facilities']]],['Important Links',[['Gallery','gallery'],['Downloads','footer'],['Public Disclosure','footer'],['Contact Us','contact']]]];
+export default function Footer(){return <footer id="footer" className="bg-forest-dark text-white/80"><Container className="grid gap-10 py-16 sm:grid-cols-2 lg:grid-cols-4">
+<div><div className="flex items-center gap-3"><span className="rounded-full bg-white p-1"><img src={s.logo} alt="School logo" className="h-12 w-auto"/></span><div className="font-extrabold leading-tight text-white">{s.name}</div></div><p className="mt-4 text-sm">{s.shortDesc}</p><p className="mt-3 text-xs text-gold-light">{s.affiliation}</p></div>
+{cols.map(([t,l])=><div key={t}><h3 className="mb-4 font-bold text-white">{t}</h3><ul className="space-y-2 text-sm">{l.map(([n,id])=><li key={n}><button onClick={()=>go(id)} className="hover:text-gold-light">{n}</button></li>)}</ul></div>)}
+<div><h3 className="mb-4 font-bold text-white">Contact</h3><ul className="space-y-2 text-sm"><li>{s.address}</li><li>{s.phone}</li><li>{s.email}</li></ul></div></Container>
+<div className="border-t border-white/10 py-5 text-center text-xs">© {s.year} {s.name}. All Rights Reserved.</div></footer>}
